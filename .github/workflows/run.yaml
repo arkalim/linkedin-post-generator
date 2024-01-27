@@ -16,6 +16,6 @@ jobs:
           options: |
             -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
             -e NOTION_API_KEY=${{ secrets.NOTION_API_KEY }}
-            -e NOTION_DB_ID=${{ vars.NOTION_DB_ID }}
+            -e NOTION_DB_ID=${{ secrets.NOTION_DB_ID }}
             -e NUM_POSTS=${{ vars.NUM_POSTS }}
             -e SAMPLE_SIZE=${{ vars.SAMPLE_SIZE }}
