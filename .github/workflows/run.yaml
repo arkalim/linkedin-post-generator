@@ -1,0 +1,20 @@
+name: Generate Linkedin Posts
+on: [workflow_dispatch]
+jobs:
+  run-docker-image:
+    name: Run Docker Image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync highlights
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ghcr.io/arkalim/linkedin-post-generator:v1.0.0
+          options: |
+            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            -e NOTION_API_KEY=${{ secrets.NOTION_API_KEY }}
+            -e NOTION_DB_ID=${{ vars.NOTION_DB_ID }}
+            -e NUM_POSTS=${{ vars.NUM_POSTS }}
+            -e SAMPLE_SIZE=${{ vars.SAMPLE_SIZE }}
