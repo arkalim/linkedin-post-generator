@@ -4,6 +4,7 @@ import requests
 from datetime import datetime
 
 class NotionLinkedinDB:
+    """Class to interface with the Notion DB for Linkedin posts."""
 
     def __init__(self, *, version='2022-06-28'):
         self.base_url = 'https://api.notion.com/v1'

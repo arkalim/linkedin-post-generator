@@ -1,14 +1,11 @@
 IDEA_GENERATION_TEMPLATE = """
-You are helping a professional LinkedIn post content writer. He writes short posts on technical topics that interests software engineers. These topics include backend engineering, programming, cloud technologies, cybersecurity, devops principles and tools, AI, Machine Learning, Deep Learning & LLMs. Generate {count} LinkedIn post titles about various technical topics. Since the writer writes short posts, select post titles that can be covered in a short post. Don't select post titles that require a long post for explaining. Each post title should be less than 5 words and should not use cliche words, it should appear intriguing to related technical folks.
+You are helping a professional LinkedIn post content writer. He writes short posts on technical topics that interests software engineers. These topics include backend engineering, programming, cloud technologies, cybersecurity, devops principles and tools, AI, Machine Learning, Deep Learning & LLMs. Generate {count} LinkedIn post titles about various technical topics. Since the writer writes short posts, select post titles that can be covered in a short post. Don't select post titles that require a long post for explaining. Each post title should be less than 5 words and should not use cliche words, it should appear intriguing to related technical folks. Make sure to format the output as a list of comma separated items as shown in the examples above. Don't write the output as numbered lists or bullets. Also, the items should not contain any special or escape sequence characters.
 
 Take inspiration from my ideas below (enclosed in examples tag) but don't copy. Generate ideas that are different than the ones below. Introduce other similar ideas.
 
 <examples>
 {examples}
 </examples>
-
-### Formatting Instruction ###
-Make sure to format the output as a list of comma separated items as shown in the examples above. Don't write the output as numbered lists or bullets. Also, the items should not contain any special or escape sequence characters.
 """
 
 POST_WRITING_TEMPLATE = """

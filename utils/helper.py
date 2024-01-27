@@ -33,7 +33,7 @@ def write_post_content(idea: str, example_post_content: list[str] = EXAMPLE_POST
 
     chain = prompt | llm | str_parser
 
-    post_content = chain.invoke({"idea": idea, "examples": example_post_content, "CTA": CTA_MESSAGE})
+    post_content = chain.invoke({"idea": idea, "examples": "\n\n".join(example_post_content)})
 
     print(f"<<<< Wrote post content: {post_content}")
 
