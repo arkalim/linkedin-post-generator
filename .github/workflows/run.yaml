@@ -8,7 +8,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Sync highlights
+      - name: Generate Linkedin Posts
         uses: addnab/docker-run-action@v3
         with:
           image: ghcr.io/arkalim/linkedin-post-generator:v1.0.0
