@@ -42,17 +42,8 @@ def write_post_content(idea: str, example_post_content: list[str] = EXAMPLE_POST
 def format_post(post_content: str) -> str:
     print(f">>>> Formatting post content: {post_content}")
 
-    # # fetch hashtags from the post content
-    # hashtags = re.findall(r'#\w+', post_content)
-
-    # # remove hashtags from the post content
-    # post_content = re.sub(r'^#.*$', '', post_content, flags=re.MULTILINE)
-
     # replace bullets
     post_content = re.sub(r'^\s*-', "●", post_content, flags=re.MULTILINE)
-
-    # # add the CTA message and the hashtags at the end of the post content
-    # formatted_post = f"{post_content.strip()}\n\n{CTA_MESSAGE}\n\n{' '.join(hashtags)}"
     
     print(f"<<<< Formatted post content: {post_content}")
 
