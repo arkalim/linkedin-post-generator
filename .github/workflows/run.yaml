@@ -16,7 +16,7 @@ jobs:
       - name: Generate Linkedin Posts
         uses: addnab/docker-run-action@v3
         with:
-          image: ghcr.io/arkalim/linkedin-post-generator:v1.0.1
+          image: ghcr.io/arkalim/linkedin-post-generator:v1.1.0
           run: python main.py
           options: |
             -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
