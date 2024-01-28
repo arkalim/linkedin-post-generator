@@ -1,16 +1,16 @@
 import re
+import os
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import CommaSeparatedListOutputParser, StrOutputParser
 
 from utils.templates import IDEA_GENERATION_TEMPLATE, POST_WRITING_TEMPLATE
-from utils.config import EXAMPLE_POST_IDEAS, IDEA_GENERATION_LLM_TEMP, POST_WRITING_LLM_TEMP, EXAMPLE_POST_CONTENT, CTA_MESSAGE
 
-def generate_post_ideas(count: int = 10, example_post_ideas = EXAMPLE_POST_IDEAS) -> list[str]:
+def generate_post_ideas(count: int, example_post_ideas: list[str]) -> list[str]:
     print(f">>>> Generating {count} post ideas")
     prompt = ChatPromptTemplate.from_template(template=IDEA_GENERATION_TEMPLATE)
 
-    llm = ChatOpenAI(temperature=IDEA_GENERATION_LLM_TEMP)
+    llm = ChatOpenAI(temperature=float(os.getenv("IDEA_GENERATION_LLM_TEMP", 0.5)))
 
     list_parser = CommaSeparatedListOutputParser()
 
@@ -22,12 +22,12 @@ def generate_post_ideas(count: int = 10, example_post_ideas = EXAMPLE_POST_IDEAS
 
     return ideas
 
-def write_post_content(idea: str, example_post_content: list[str] = EXAMPLE_POST_CONTENT) -> str:
+def write_post_content(idea: str, example_post_content: list[str]) -> str:
     print(f">>>> Writing post content for idea: {idea}")
 
     prompt = ChatPromptTemplate.from_template(template=POST_WRITING_TEMPLATE)
 
-    llm = ChatOpenAI(temperature=POST_WRITING_LLM_TEMP)
+    llm = ChatOpenAI(temperature=float(os.getenv("POST_WRITING_LLM_TEMP", 0.5)))
 
     str_parser = StrOutputParser()
 

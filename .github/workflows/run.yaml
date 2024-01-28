@@ -1,8 +1,13 @@
 name: Generate Linkedin Posts
-on: [workflow_dispatch]
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 6"
+
 jobs:
   run-docker-image:
-    name: Run Docker Image
+    name: Generate Linkedin Posts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -17,5 +22,8 @@ jobs:
             -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
             -e NOTION_API_KEY=${{ secrets.NOTION_API_KEY }}
             -e NOTION_DB_ID=${{ secrets.NOTION_DB_ID }}
-            -e NUM_POSTS=${{ vars.NUM_POSTS }}
-            -e SAMPLE_SIZE=${{ vars.SAMPLE_SIZE }}
+            -e NUM_POSTS_TO_GENERATE=${{ vars.NUM_POSTS_TO_GENERATE }}
+            -e IDEA_GENERATION_EXAMPLE_SAMPLE_SIZE=${{ vars.IDEA_GENERATION_EXAMPLE_SAMPLE_SIZE }}
+            -e POST_WRITING_EXAMPLE_SAMPLE_SIZE=${{ vars.POST_WRITING_EXAMPLE_SAMPLE_SIZE }}
+            -e IDEA_GENERATION_LLM_TEMP=${{ vars.IDEA_GENERATION_LLM_TEMP }}
+            -e POST_WRITING_LLM_TEMP=${{ vars.POST_WRITING_LLM_TEMP }}
